@@ -10,6 +10,18 @@ const awsmobile = {
         identityPoolId: 'ap-northeast-1:89fa296a-cddb-4937-b82e-2d8dc9732592',
         mandatorySignIn: false,
     },
+    API: {
+        endpoints: [
+            {
+                // API GateWay 所在的地區
+                region: 'ap-northeast-1',
+                // 程式碼之中所使用的名稱
+                name: 'myapi',
+                // API GateWay的Host Domain
+                endpoint: 'https://sgv8e6fakf.execute-api.ap-northeast-1.amazonaws.com/v1',
+            },
+        ],
+    },
 }
 
 export default awsmobile

@@ -3,11 +3,32 @@ import './App.css';
 import Amplify from "aws-amplify";
 import {AmplifyAuthenticator, AmplifySignOut} from "@aws-amplify/ui-react";
 import awsconfig from "./awsconfig";
+import { API } from 'aws-amplify'
+
+const useAPIGateWay = () => {
+  /**
+   * 呼叫api
+   */
+  const getTodo = () => {
+    API.get('myapi', `/todo`, {})
+      .then((data) => {
+        console.log('data', data);
+      })
+      .catch((e) => {
+        console.log('[device]  錯誤', e)
+      })
+  }
+  return {
+    getTodo
+  }
+}
 
 
 function App() {
   // 設定amplify服務
   Amplify.configure(awsconfig);
+
+  const { getTodo } = useAPIGateWay();
   return (
     <AmplifyAuthenticator>
       <div className="App">
@@ -24,6 +45,7 @@ function App() {
           >
             Learn React
           </a>
+          <button onClick={() => getTodo()}>呼叫api</button>
         <AmplifySignOut />
         </header>
       </div>
